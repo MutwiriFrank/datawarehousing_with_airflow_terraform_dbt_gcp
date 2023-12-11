@@ -1,0 +1,62 @@
+
+[
+    {
+        "name" :"course_id",
+        "type" : "INTEGER",
+        "mode" :"REQUIRED",
+        "description": "course Unique identifier"
+    },
+
+    {
+        "name" :"course_name",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "course Name"
+    },
+
+    {
+        "name" :"course_code",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "course code"
+    },
+
+    {
+        "name" :"course_code_desc",
+        "type" : "STRING",
+        "mode" :"NULLABLE",
+        "description": "course code description"
+    },
+
+    {
+        "name" :"course_period",
+        "type" : "INTEGER",
+        "mode" :"NULLABLE",
+        "description": "course period"
+    },
+
+    {
+        "name" :"department_id",
+        "type" : "INTEGER",
+        "mode" :"NULLABLE",
+        "description": "course department"
+    },
+
+    {
+        "name" :"create_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "create  datetime"
+    },
+
+    {
+        "name" :"updated_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "updated datetime"
+    }
+
+
+
+
+]

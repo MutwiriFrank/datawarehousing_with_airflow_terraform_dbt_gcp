@@ -1,0 +1,2 @@
+[2023-11-30T05:40:31.066+0000] {taskinstance.py:1149} INFO - Dependencies not met for <TaskInstance: ingest_to_postgres.upload_to_gcs_course scheduled__2023-09-13T00:00:00+00:00 [queued]>, dependency 'Previous Dagrun State' FAILED: depends_on_past is true for this task, but 1 previous task instance(s) are not in a successful state.
+[2023-11-30T05:40:31.087+0000] {local_task_job_runner.py:154} INFO - Task is not able to be run

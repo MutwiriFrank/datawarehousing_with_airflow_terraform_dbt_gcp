@@ -1,0 +1,569 @@
+[2023-11-30T19:04:51.011+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-11-30T19:04:51.021+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-11-30T19:04:51.021+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-11-30T19:04:51.050+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-28 00:00:00+00:00
+[2023-11-30T19:04:51.056+0000] {standard_task_runner.py:57} INFO - Started process 673 to run task
+[2023-11-30T19:04:51.061+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_bucket', 'PostgresToGCS1', 'scheduled__2023-11-28T00:00:00+00:00', '--job-id', '189', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmperogsvis']
+[2023-11-30T19:04:51.066+0000] {standard_task_runner.py:85} INFO - Job 189: Subtask PostgresToGCS1
+[2023-11-30T19:04:51.184+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [running]> on host d9318cdc880c
+[2023-11-30T19:04:51.791+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_bucket' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-28T00:00:00+00:00'
+[2023-11-30T19:04:51.813+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-11-30T19:04:51.819+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-11-30T19:04:51.835+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-11-30T19:04:51.855+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-11-30T19:04:51.906+0000] {postgres_to_gcs_staging.py:41} INFO - Uploading to bucket, course.csv
+[2023-11-30T19:04:52.495+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 42, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, GS_PATH +table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 556, in upload
+    _call_with_retry(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 514, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2924, in upload_from_filename
+    self._handle_filename_and_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2794, in _handle_filename_and_upload
+    self._prep_and_do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2602, in _prep_and_do_upload
+    created_json = self._do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2408, in _do_upload
+    response = self._do_multipart_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 1879, in _do_multipart_upload
+    hostname=hostname, bucket_path=self.bucket.path, api_version=_API_VERSION
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1167, in path
+    raise ValueError("Cannot determine path without bucket name.")
+ValueError: Cannot determine path without bucket name.
+[2023-11-30T19:04:52.864+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_to_gcs_bucket, task_id=PostgresToGCS1, execution_date=20231128T000000, start_date=20231130T190451, end_date=20231130T190452
+[2023-11-30T19:04:52.912+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2023-11-30T19:04:52.914+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-11-30T19:04:52.914+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-11-30T19:04:52.940+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-11-30T19:04:52.941+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-11-30T19:04:52.941+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 42, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, GS_PATH +table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 556, in upload
+    _call_with_retry(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 514, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2924, in upload_from_filename
+    self._handle_filename_and_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2794, in _handle_filename_and_upload
+    self._prep_and_do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2602, in _prep_and_do_upload
+    created_json = self._do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2408, in _do_upload
+    response = self._do_multipart_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 1879, in _do_multipart_upload
+    hostname=hostname, bucket_path=self.bucket.path, api_version=_API_VERSION
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1167, in path
+    raise ValueError("Cannot determine path without bucket name.")
+ValueError: Cannot determine path without bucket name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2023-11-30T19:04:53.086+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 189 for task PostgresToGCS1 (Cannot determine path without bucket name.; 673)
+[2023-11-30T19:04:53.129+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-30T19:04:53.220+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-11-30T19:56:08.444+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-11-30T19:56:08.480+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-11-30T19:56:08.480+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-11-30T19:56:08.519+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-28 00:00:00+00:00
+[2023-11-30T19:56:08.529+0000] {standard_task_runner.py:57} INFO - Started process 382 to run task
+[2023-11-30T19:56:08.534+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_bucket', 'PostgresToGCS1', 'scheduled__2023-11-28T00:00:00+00:00', '--job-id', '202', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp_9e984ds']
+[2023-11-30T19:56:08.539+0000] {standard_task_runner.py:85} INFO - Job 202: Subtask PostgresToGCS1
+[2023-11-30T19:56:08.659+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [running]> on host 478ddcb97012
+[2023-11-30T19:56:08.853+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_bucket' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-28T00:00:00+00:00'
+[2023-11-30T19:56:08.875+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-11-30T19:56:08.883+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-11-30T19:56:08.903+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-11-30T19:56:08.921+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-11-30T19:56:09.029+0000] {postgres_to_gcs_staging.py:41} INFO - Uploading to bucket, course.csv
+[2023-11-30T19:56:09.051+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 259, in get_credentials_and_project_id
+    keyfile_dict_json = json.loads(keyfile_dict)
+  File "/usr/local/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/lib/python3.8/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 2406 (char 2405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 42, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, GS_PATH +table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 530, in upload
+    client = self.get_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 173, in get_conn
+    credentials=self.get_credentials(), client_info=CLIENT_INFO, project=self.project_id
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 296, in get_credentials
+    credentials, _ = self.get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 261, in get_credentials_and_project_id
+    raise AirflowException("Invalid key JSON.")
+airflow.exceptions.AirflowException: Invalid key JSON.
+[2023-11-30T19:56:09.057+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_to_gcs_bucket, task_id=PostgresToGCS1, execution_date=20231128T000000, start_date=20231130T195608, end_date=20231130T195609
+[2023-11-30T19:56:09.117+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2023-11-30T19:56:09.118+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-11-30T19:56:09.118+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-11-30T19:56:09.136+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-11-30T19:56:09.136+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-11-30T19:56:09.137+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 259, in get_credentials_and_project_id
+    keyfile_dict_json = json.loads(keyfile_dict)
+  File "/usr/local/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/lib/python3.8/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 2406 (char 2405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 42, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, GS_PATH +table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 530, in upload
+    client = self.get_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 173, in get_conn
+    credentials=self.get_credentials(), client_info=CLIENT_INFO, project=self.project_id
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 296, in get_credentials
+    credentials, _ = self.get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 261, in get_credentials_and_project_id
+    raise AirflowException("Invalid key JSON.")
+airflow.exceptions.AirflowException: Invalid key JSON.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2023-11-30T19:56:09.206+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 202 for task PostgresToGCS1 (Invalid key JSON.; 382)
+[2023-11-30T19:56:09.227+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-11-30T19:56:09.280+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-01T11:32:43.938+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-12-01T11:32:43.965+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-12-01T11:32:43.966+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-01T11:32:44.001+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-28 00:00:00+00:00
+[2023-12-01T11:32:44.009+0000] {standard_task_runner.py:57} INFO - Started process 790 to run task
+[2023-12-01T11:32:44.014+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_bucket', 'PostgresToGCS1', 'scheduled__2023-11-28T00:00:00+00:00', '--job-id', '211', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmplwdfgd_o']
+[2023-12-01T11:32:44.020+0000] {standard_task_runner.py:85} INFO - Job 211: Subtask PostgresToGCS1
+[2023-12-01T11:32:44.246+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [running]> on host 363088228d6a
+[2023-12-01T11:32:44.968+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_bucket' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-28T00:00:00+00:00'
+[2023-12-01T11:32:44.987+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T11:32:45.018+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-01T11:32:45.066+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T11:32:45.083+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T11:32:45.119+0000] {postgres_to_gcs_staging.py:41} INFO - Uploading to bucket, course.csv
+[2023-12-01T11:32:45.141+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 259, in get_credentials_and_project_id
+    keyfile_dict_json = json.loads(keyfile_dict)
+  File "/usr/local/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/lib/python3.8/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 2406 (char 2405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 42, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, GS_PATH +table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 530, in upload
+    client = self.get_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 173, in get_conn
+    credentials=self.get_credentials(), client_info=CLIENT_INFO, project=self.project_id
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 296, in get_credentials
+    credentials, _ = self.get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 261, in get_credentials_and_project_id
+    raise AirflowException("Invalid key JSON.")
+airflow.exceptions.AirflowException: Invalid key JSON.
+[2023-12-01T11:32:45.269+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_to_gcs_bucket, task_id=PostgresToGCS1, execution_date=20231128T000000, start_date=20231201T113243, end_date=20231201T113245
+[2023-12-01T11:32:45.369+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2023-12-01T11:32:45.371+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-12-01T11:32:45.372+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-12-01T11:32:45.445+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-12-01T11:32:45.446+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-12-01T11:32:45.447+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 259, in get_credentials_and_project_id
+    keyfile_dict_json = json.loads(keyfile_dict)
+  File "/usr/local/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/lib/python3.8/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 2406 (char 2405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 42, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, GS_PATH +table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 530, in upload
+    client = self.get_conn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 173, in get_conn
+    credentials=self.get_credentials(), client_info=CLIENT_INFO, project=self.project_id
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 296, in get_credentials
+    credentials, _ = self.get_credentials_and_project_id()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/common/hooks/base_google.py", line 261, in get_credentials_and_project_id
+    raise AirflowException("Invalid key JSON.")
+airflow.exceptions.AirflowException: Invalid key JSON.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2023-12-01T11:32:45.640+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 211 for task PostgresToGCS1 (Invalid key JSON.; 790)
+[2023-12-01T11:32:45.730+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-01T11:32:45.856+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-01T12:20:03.029+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-12-01T12:20:03.050+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-12-01T12:20:03.050+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-01T12:20:03.075+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-28 00:00:00+00:00
+[2023-12-01T12:20:03.081+0000] {standard_task_runner.py:57} INFO - Started process 498 to run task
+[2023-12-01T12:20:03.085+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_bucket', 'PostgresToGCS1', 'scheduled__2023-11-28T00:00:00+00:00', '--job-id', '232', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpgous704n']
+[2023-12-01T12:20:03.087+0000] {standard_task_runner.py:85} INFO - Job 232: Subtask PostgresToGCS1
+[2023-12-01T12:20:03.172+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [running]> on host 40ff33dd73db
+[2023-12-01T12:20:03.291+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_bucket' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-28T00:00:00+00:00'
+[2023-12-01T12:20:03.293+0000] {logging_mixin.py:151} INFO - Current working directory: /opt/airflow
+[2023-12-01T12:20:03.308+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T12:20:03.309+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T12:20:03.322+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:20:03.339+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:20:03.353+0000] {postgres_to_gcs_staging.py:42} INFO - Uploading to bucket, course.csv
+[2023-12-01T12:20:03.420+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 43, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 556, in upload
+    _call_with_retry(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 514, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2924, in upload_from_filename
+    self._handle_filename_and_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2794, in _handle_filename_and_upload
+    self._prep_and_do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2602, in _prep_and_do_upload
+    created_json = self._do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2408, in _do_upload
+    response = self._do_multipart_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 1879, in _do_multipart_upload
+    hostname=hostname, bucket_path=self.bucket.path, api_version=_API_VERSION
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1167, in path
+    raise ValueError("Cannot determine path without bucket name.")
+ValueError: Cannot determine path without bucket name.
+[2023-12-01T12:20:03.443+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_to_gcs_bucket, task_id=PostgresToGCS1, execution_date=20231128T000000, start_date=20231201T122003, end_date=20231201T122003
+[2023-12-01T12:20:03.468+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2023-12-01T12:20:03.468+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-12-01T12:20:03.468+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-12-01T12:20:03.485+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2023-12-01T12:20:03.485+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2023-12-01T12:20:03.485+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 43, in Postgres_To_GCS1
+    gcs_hook.upload(BUCKET, table + ".csv", table + ".csv")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 556, in upload
+    _call_with_retry(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 514, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2924, in upload_from_filename
+    self._handle_filename_and_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2794, in _handle_filename_and_upload
+    self._prep_and_do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2602, in _prep_and_do_upload
+    created_json = self._do_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 2408, in _do_upload
+    response = self._do_multipart_upload(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 1879, in _do_multipart_upload
+    hostname=hostname, bucket_path=self.bucket.path, api_version=_API_VERSION
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1167, in path
+    raise ValueError("Cannot determine path without bucket name.")
+ValueError: Cannot determine path without bucket name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2023-12-01T12:20:03.529+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 232 for task PostgresToGCS1 (Cannot determine path without bucket name.; 498)
+[2023-12-01T12:20:03.577+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2023-12-01T12:20:03.624+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-12-01T12:53:12.170+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-12-01T12:53:12.211+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [queued]>
+[2023-12-01T12:53:12.211+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-01T12:53:12.244+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-28 00:00:00+00:00
+[2023-12-01T12:53:12.252+0000] {standard_task_runner.py:57} INFO - Started process 1323 to run task
+[2023-12-01T12:53:12.256+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_bucket', 'PostgresToGCS1', 'scheduled__2023-11-28T00:00:00+00:00', '--job-id', '237', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp959sdkpr']
+[2023-12-01T12:53:12.259+0000] {standard_task_runner.py:85} INFO - Job 237: Subtask PostgresToGCS1
+[2023-12-01T12:53:12.328+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_bucket.PostgresToGCS1 scheduled__2023-11-28T00:00:00+00:00 [running]> on host 40ff33dd73db
+[2023-12-01T12:53:12.489+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_bucket' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-28T00:00:00+00:00'
+[2023-12-01T12:53:12.490+0000] {logging_mixin.py:151} INFO - Current working directory: /opt/airflow
+[2023-12-01T12:53:12.505+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T12:53:12.507+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T12:53:12.519+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:53:12.534+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:53:12.546+0000] {postgres_to_gcs_staging.py:42} INFO - Uploading to bucket, course.csv
+[2023-12-01T12:53:14.265+0000] {gcs.py:562} INFO - File course.csv uploaded to course.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T12:53:14.284+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T12:53:14.285+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T12:53:14.301+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:53:14.319+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:53:14.335+0000] {postgres_to_gcs_staging.py:42} INFO - Uploading to bucket, country.csv
+[2023-12-01T12:53:15.485+0000] {gcs.py:562} INFO - File country.csv uploaded to country.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T12:53:15.498+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T12:53:15.498+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T12:53:15.511+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:53:15.523+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T12:53:15.535+0000] {postgres_to_gcs_staging.py:42} INFO - Uploading to bucket, department.csv
+[2023-12-01T12:53:17.224+0000] {gcs.py:562} INFO - File department.csv uploaded to department.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T12:53:17.225+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-01T12:53:17.248+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_to_gcs_bucket, task_id=PostgresToGCS1, execution_date=20231128T000000, start_date=20231201T125312, end_date=20231201T125317
+[2023-12-01T12:53:17.312+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-01T12:53:17.353+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

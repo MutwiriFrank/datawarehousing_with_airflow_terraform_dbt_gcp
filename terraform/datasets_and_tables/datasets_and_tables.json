@@ -1,0 +1,45 @@
+[
+    {
+      "datasetId": "staging_school",
+      "datasetRegion": "europe-west6",
+      "datasetFriendlyName": "School Dataset containing raw data",
+      "datasetDescription": "Schoolraw Dataset description",
+      "tables": [
+        {
+          "tableId": "STG_DEPARTMENT",
+          "tableSchemaPath": "datasets_and_tables/schema/staging/STG_DEPARTMENT.json"
+        },
+        {
+            "tableId": "STG_COURSE",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_COURSE.json"
+        },
+        {
+            "tableId": "STG_UNIT",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_UNIT.json"
+        },
+        {
+            "tableId": "STG_COUNTRY",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_COUNTRY.json"
+        }
+        
+
+  
+
+      ]
+    },
+    {
+      "datasetId": "dwm_school",
+      "datasetRegion": "europe-west6",
+      "datasetFriendlyName": "School Dataset containing raw data",
+      "datasetDescription": "Schoolraw Dataset description",
+      "tables": [
+        {
+          "tableId": "DWM_DEPARTMENT",
+          "tableSchemaPath": "datasets_and_tables/schema/dwm/DWM_DEPARMENT.json"
+          
+        }     
+  
+
+      ]
+    }
+  ]

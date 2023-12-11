@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "data-warehousing-proj",
+  "private_key_id": "41aeaea29c3d45d0b6c499879abbdaa190a52b7e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4z4c5X6qqerq7\n40r41HniOzbSSeVxUFg3nGBn+G7kV/5wycYnEHTq99F9QncMET99TKxqT4MtNny2\nCFFQsAjC8SZ6PTyTAAsTJ6iGEzoHUiDRVMYO3/0wkSWZZkNHpI4n6cVwstBRVnlH\n1EFuHWBd84bNboGTYnkTKaDnkM5nHQvb/daPh3FDkv3/iPy/U55dlfqqGixGpmNE\n5IHnAOp7cG1e4WX5ta5DemTMLuF/XbCS6LVv89TMngR+Zz3SL4tokb/G/ZNd4R+I\ndoPcrwetzZik5XkTNLbEBtBE9V04k1yeDsanruZ1Q9pAvvgjpAQVZHj3hiUmPtg3\n4HtK3sOJAgMBAAECggEAIDthlCoRM+ZvxvEfVEKKd2BocUieEaM3n4tQbRGxFXYb\nVER8oLeIDKroCHadGKexcQL8VxZDBJGqMn1E4VOyU32Hfm5LsD+jrtWN2MRlrH0w\naBHm8RUzrVLDQfvJ5CbY/DETVFJ7bpQsVtC4EKJi+j/M1OtfAft8rlDmVTy2Itlr\nhHWaEEeila+e2WzE9aD/kqZFNegIv7U2XrWSOvPolRsaTlBZN2jefmfbmW3N6vp5\nRkNy20x4Dun/6v/MfCX53JQEi509BdlzVK+AHfT8/bH29MMicZ8ZrKoNY6/TNPO4\nFqPmr9OhoL2jsPk65phHRXrgAok1KvZydYJ2VJo4mQKBgQD3hhMux9WtFNeIvvZS\n3zH+ynuRUZ40ay5574D4x8QXwxBYsuhWL+h6jh2Lsb4/u4ozZpy+1FEFu7ZUf6DF\nzSJa2CA21R0INilePmieOrKaXJFfELWtw9sYfJlbOq5cDB+N6AyXcyapvKpXWEyl\nuZPH9n5Hq/zgDBrCnMrQgPnlowKBgQC/I61R9OYRHBfbXCy/aaauOvOIeUppMWKK\n9BjAszw0148sPycTd4MotIxravLonLY7iGC5CzBrGUfAudfQ2SSHAUiF3L0vwA2N\n/yOxo3v68SE+fW3aKi5RX08hU0PZVYIS1dATFJYuMwoGdJZt1Rh64hCrSI1xQ/zQ\nCoMxarGM4wKBgQDUfk+di4TOz+Owy2+f+WhsOdwXByBwE8uUdp4b9TNMyvMPkpeO\n1hYYkEShFngjMpcURXUvBgqAh4Ohyud0qARkRMJzEEWaNRUSiTU7EV0e03UhTbEK\needvgBgPj7L75pR4OMwGgJ6ifQsnbPBwHX7W3a/PS8ENfpbCl+QtV2wxTQKBgHWs\n5Vv7xljqTtXCXdpKlU/XA3AWHHW+7chWl5arwnlV7NN03f3iKmG5JmpLodkMAjWM\ntN+3v8tv+Pjycagmx5JGe/vN9rubJb0yQytuVzobkjgCyMr0BSgb4X/G35LCTh6C\nfGQC3KL80UNALAzakQO2gkSxmkMNdGwwzKxz33O5AoGBAOsKxSFlSIbc+Uo/8HXO\n6uPl9iMTaTKMPXGTaZUJ4S7pdZeTLSdMe8yWVujwLwdOoq2LSaP2DW6eCNhcTUhS\nKVV8eeyDnfbmuKWssOlmZuGNyJlmjgYL8QDdUmkP6NfAehJr8VHDYQ4+GQXs7ktC\naGSOd+DDdvIOW8po24hNs7ui\n-----END PRIVATE KEY-----\n",
+  "client_email": "data-warehousing-sa-user@data-warehousing-proj.iam.gserviceaccount.com",
+  "client_id": "113919472165270682257",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/data-warehousing-sa-user%40data-warehousing-proj.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

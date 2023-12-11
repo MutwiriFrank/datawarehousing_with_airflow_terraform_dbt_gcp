@@ -1,0 +1,17 @@
+[2023-12-01T18:59:44.959+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_to_bq.course_load_dataset_to_bq scheduled__2023-11-30T00:00:00+00:00 [queued]>
+[2023-12-01T18:59:44.982+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_to_bq.course_load_dataset_to_bq scheduled__2023-11-30T00:00:00+00:00 [queued]>
+[2023-12-01T18:59:44.982+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-01T18:59:45.021+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2023-11-30 00:00:00+00:00
+[2023-12-01T18:59:45.030+0000] {standard_task_runner.py:57} INFO - Started process 10076 to run task
+[2023-12-01T18:59:45.040+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_to_bq', 'course_load_dataset_to_bq', 'scheduled__2023-11-30T00:00:00+00:00', '--job-id', '311', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpvo7qhvnd']
+[2023-12-01T18:59:45.045+0000] {standard_task_runner.py:85} INFO - Job 311: Subtask course_load_dataset_to_bq
+[2023-12-01T18:59:45.253+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_to_bq.course_load_dataset_to_bq scheduled__2023-11-30T00:00:00+00:00 [running]> on host 40ff33dd73db
+[2023-12-01T18:59:45.453+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_to_bq' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2023-11-30T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-30T00:00:00+00:00'
+[2023-12-01T18:59:45.474+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T18:59:45.475+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-01T18:59:45.476+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2023-12-01T18:59:45.542+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/course.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': 'true', 'encoding': 'UTF-8'}}
+[2023-12-01T18:59:45.544+0000] {bigquery.py:1596} INFO - Inserting job airflow_ingest_to_gcs_to_bq_course_load_dataset_to_bq_2023_11_30T00_00_00_00_00_7171b83d4afe60d7f6385712e9c57021
+[2023-12-01T18:59:48.750+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_to_gcs_to_bq, task_id=course_load_dataset_to_bq, execution_date=20231130T000000, start_date=20231201T185944, end_date=20231201T185948
+[2023-12-01T18:59:48.790+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-01T18:59:48.813+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

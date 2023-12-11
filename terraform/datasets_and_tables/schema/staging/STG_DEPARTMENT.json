@@ -1,0 +1,48 @@
+
+[
+    {
+        "name" :"deparment_id",
+        "type" : "INTEGER",
+        "mode" :"REQUIRED",
+        "description": "deparment Unique identifier"
+    },
+
+    {
+        "name" :"deparment_name",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "deparment Name"
+    },
+
+    {
+        "name" :"deparment_code",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "deparment code"
+    },
+
+    {
+        "name" :"deparment_code_desc",
+        "type" : "STRING",
+        "mode" :"NULLABLE",
+        "description": "deparment code description"
+    },
+
+    {
+        "name" :"create_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "create  datetime"
+    },
+
+    {
+        "name" :"updated_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "updated datetime"
+    }
+
+
+
+
+]

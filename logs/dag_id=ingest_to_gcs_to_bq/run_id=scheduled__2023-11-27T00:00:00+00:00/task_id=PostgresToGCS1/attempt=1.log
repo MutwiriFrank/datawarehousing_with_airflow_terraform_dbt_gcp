@@ -1,0 +1,64 @@
+[2023-12-01T17:39:02.225+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_to_bq.PostgresToGCS1 scheduled__2023-11-27T00:00:00+00:00 [queued]>
+[2023-12-01T17:39:02.248+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_to_bq.PostgresToGCS1 scheduled__2023-11-27T00:00:00+00:00 [queued]>
+[2023-12-01T17:39:02.249+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-01T17:39:02.320+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-27 00:00:00+00:00
+[2023-12-01T17:39:02.330+0000] {standard_task_runner.py:57} INFO - Started process 7785 to run task
+[2023-12-01T17:39:02.335+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_to_bq', 'PostgresToGCS1', 'scheduled__2023-11-27T00:00:00+00:00', '--job-id', '250', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpku2xuum4']
+[2023-12-01T17:39:02.340+0000] {standard_task_runner.py:85} INFO - Job 250: Subtask PostgresToGCS1
+[2023-12-01T17:39:02.477+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_to_bq.PostgresToGCS1 scheduled__2023-11-27T00:00:00+00:00 [running]> on host 40ff33dd73db
+[2023-12-01T17:39:02.678+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_to_bq' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-27T00:00:00+00:00'
+[2023-12-01T17:39:02.681+0000] {logging_mixin.py:151} INFO - Current working directory: /opt/airflow
+[2023-12-01T17:39:02.702+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T17:39:02.704+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T17:39:02.722+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T17:39:02.741+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T17:39:02.756+0000] {postgres_to_gcs_staging.py:44} INFO - Uploading to bucket, course.csv
+[2023-12-01T17:39:04.618+0000] {gcs.py:562} INFO - File course.csv uploaded to course.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T17:39:04.636+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T17:39:04.637+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T17:39:04.656+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T17:39:04.672+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T17:39:04.686+0000] {postgres_to_gcs_staging.py:44} INFO - Uploading to bucket, country.csv
+[2023-12-01T17:39:05.733+0000] {gcs.py:562} INFO - File country.csv uploaded to country.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T17:39:05.750+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T17:39:05.751+0000] {base.py:73} INFO - Using connection ID 'google_cloud_conn' for task execution.
+[2023-12-01T17:39:05.767+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T17:39:05.783+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T17:39:05.796+0000] {postgres_to_gcs_staging.py:44} INFO - Uploading to bucket, department.csv
+[2023-12-01T17:39:07.436+0000] {gcs.py:562} INFO - File department.csv uploaded to department.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T17:39:07.437+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-01T17:39:07.451+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_to_gcs_to_bq, task_id=PostgresToGCS1, execution_date=20231127T000000, start_date=20231201T173902, end_date=20231201T173907
+[2023-12-01T17:39:07.505+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-01T17:39:07.537+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-12-01T18:59:27.230+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_to_gcs_to_bq.PostgresToGCS1 scheduled__2023-11-27T00:00:00+00:00 [queued]>
+[2023-12-01T18:59:27.272+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_to_gcs_to_bq.PostgresToGCS1 scheduled__2023-11-27T00:00:00+00:00 [queued]>
+[2023-12-01T18:59:27.272+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2023-12-01T18:59:27.317+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): PostgresToGCS1> on 2023-11-27 00:00:00+00:00
+[2023-12-01T18:59:27.325+0000] {standard_task_runner.py:57} INFO - Started process 10047 to run task
+[2023-12-01T18:59:27.334+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_to_gcs_to_bq', 'PostgresToGCS1', 'scheduled__2023-11-27T00:00:00+00:00', '--job-id', '304', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpwqja3816']
+[2023-12-01T18:59:27.338+0000] {standard_task_runner.py:85} INFO - Job 304: Subtask PostgresToGCS1
+[2023-12-01T18:59:27.460+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_to_gcs_to_bq.PostgresToGCS1 scheduled__2023-11-27T00:00:00+00:00 [running]> on host 40ff33dd73db
+[2023-12-01T18:59:27.628+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_to_gcs_to_bq' AIRFLOW_CTX_TASK_ID='PostgresToGCS1' AIRFLOW_CTX_EXECUTION_DATE='2023-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-27T00:00:00+00:00'
+[2023-12-01T18:59:27.631+0000] {logging_mixin.py:151} INFO - Current working directory: /opt/airflow
+[2023-12-01T18:59:27.658+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T18:59:27.659+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-01T18:59:27.684+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T18:59:27.705+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T18:59:27.720+0000] {postgres_to_gcs_staging.py:44} INFO - Uploading to bucket, course.csv
+[2023-12-01T18:59:29.579+0000] {gcs.py:562} INFO - File course.csv uploaded to course.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T18:59:29.593+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T18:59:29.594+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-01T18:59:29.609+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T18:59:29.625+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T18:59:29.638+0000] {postgres_to_gcs_staging.py:44} INFO - Uploading to bucket, country.csv
+[2023-12-01T18:59:31.349+0000] {gcs.py:562} INFO - File country.csv uploaded to country.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T18:59:31.397+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2023-12-01T18:59:31.398+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-12-01T18:59:31.440+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T18:59:31.466+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2023-12-01T18:59:31.507+0000] {postgres_to_gcs_staging.py:44} INFO - Uploading to bucket, department.csv
+[2023-12-01T18:59:33.257+0000] {gcs.py:562} INFO - File department.csv uploaded to department.csv in school_data_lake_data-warehousing-proj bucket
+[2023-12-01T18:59:33.258+0000] {python.py:194} INFO - Done. Returned value was: None
+[2023-12-01T18:59:33.289+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_to_gcs_to_bq, task_id=PostgresToGCS1, execution_date=20231127T000000, start_date=20231201T185927, end_date=20231201T185933
+[2023-12-01T18:59:33.358+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-12-01T18:59:33.409+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

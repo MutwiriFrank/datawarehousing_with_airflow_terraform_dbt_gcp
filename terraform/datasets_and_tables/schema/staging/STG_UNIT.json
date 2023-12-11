@@ -1,0 +1,48 @@
+
+[
+    {
+        "name" :"unit_id",
+        "type" : "INTEGER",
+        "mode" :"REQUIRED",
+        "description": "unit Unique identifier"
+    },
+
+    {
+        "name" :"unit_name",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "unit Name"
+    },
+
+    {
+        "name" :"unit_code",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "unit code"
+    },
+
+    {
+        "name" :"unit_code_desc",
+        "type" : "STRING",
+        "mode" :"NULLABLE",
+        "description": "unit code description"
+    },
+
+    {
+        "name" :"create_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "create  datetime"
+    },
+
+    {
+        "name" :"updated_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "updated datetime"
+    }
+
+
+
+
+]

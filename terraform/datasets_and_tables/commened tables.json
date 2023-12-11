@@ -1,0 +1,18 @@
+    [
+        {
+            "tableId": "STG_PERSON",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_PERSON.json"
+        },
+        {
+            "tableId": "STG_LECTURER",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_LECTURER.json"
+        },
+        {
+            "tableId": "STG_STUDENT",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_STUDENT.json"
+        },
+        {
+            "tableId": "STG_STUDENT_COURSE_ENROLLMENT",
+            "tableSchemaPath": "datasets_and_tables/schema/staging/STG_STUDENT_COURSE_ENROLLMENT.json"
+        }
+    ]

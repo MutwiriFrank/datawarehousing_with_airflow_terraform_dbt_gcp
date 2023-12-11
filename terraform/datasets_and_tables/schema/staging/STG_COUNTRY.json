@@ -1,0 +1,48 @@
+
+[
+    {
+        "name" :"country_id",
+        "type" : "INTEGER",
+        "mode" :"REQUIRED",
+        "description": "Country Unique identifier"
+    },
+
+    {
+        "name" :"country_name",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "Country Name"
+    },
+
+    {
+        "name" :"country_code",
+        "type" : "STRING",
+        "mode" :"REQUIRED",
+        "description": "Country code"
+    },
+
+    {
+        "name" :"country_code_desc",
+        "type" : "STRING",
+        "mode" :"NULLABLE",
+        "description": "Country code description"
+    },
+
+    {
+        "name" :"create_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "create  datetime"
+    },
+
+    {
+        "name" :"updated_dtm",
+        "type" : "TIMESTAMP",
+        "mode" :"NULLABLE",
+        "description": "updated datetime"
+    }
+
+
+
+
+]

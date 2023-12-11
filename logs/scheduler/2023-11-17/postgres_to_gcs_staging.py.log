@@ -1,0 +1,138 @@
+[2023-11-17T17:40:13.100+0000] {processor.py:157} INFO - Started process (PID=701) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:40:13.102+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:40:13.104+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:40:13.103+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:40:13.172+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:40:13.454+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:40:13.453+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:40:14.364+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 1.274 seconds
+[2023-11-17T17:40:44.547+0000] {processor.py:157} INFO - Started process (PID=720) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:40:44.548+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:40:44.549+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:40:44.549+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:40:44.569+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:40:44.632+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:40:44.632+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:40:44.701+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.160 seconds
+[2023-11-17T17:41:14.837+0000] {processor.py:157} INFO - Started process (PID=732) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:41:15.014+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:41:15.015+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:41:15.015+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:41:15.039+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:41:15.082+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:41:15.082+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:41:15.180+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.351 seconds
+[2023-11-17T17:41:45.325+0000] {processor.py:157} INFO - Started process (PID=745) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:41:45.326+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:41:45.327+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:41:45.327+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:41:45.341+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:41:45.373+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:41:45.373+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:41:45.667+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.346 seconds
+[2023-11-17T17:42:15.817+0000] {processor.py:157} INFO - Started process (PID=755) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:42:16.220+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:42:16.222+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:42:16.221+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:42:16.236+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:42:16.273+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:42:16.273+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:42:16.511+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.700 seconds
+[2023-11-17T17:42:46.646+0000] {processor.py:157} INFO - Started process (PID=767) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:42:46.647+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:42:46.649+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:42:46.648+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:42:46.681+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:42:46.742+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:42:46.742+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:42:46.981+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.341 seconds
+[2023-11-17T17:43:17.147+0000] {processor.py:157} INFO - Started process (PID=779) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:43:17.172+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:43:17.174+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:43:17.173+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:43:17.207+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:43:17.249+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:43:17.249+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:43:17.319+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.178 seconds
+[2023-11-17T17:43:47.449+0000] {processor.py:157} INFO - Started process (PID=785) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:43:47.467+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:43:47.469+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:43:47.468+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:43:47.482+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:43:47.521+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:43:47.521+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:43:47.608+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.162 seconds
+[2023-11-17T17:44:17.727+0000] {processor.py:157} INFO - Started process (PID=797) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:44:17.728+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:44:17.729+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:44:17.729+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:44:17.742+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:44:17.773+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:44:17.773+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:44:17.829+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.106 seconds
+[2023-11-17T17:44:47.858+0000] {processor.py:157} INFO - Started process (PID=809) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:44:47.872+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:44:47.873+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:44:47.872+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:44:47.887+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:44:47.927+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:44:47.927+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:44:47.984+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.130 seconds
+[2023-11-17T17:45:18.100+0000] {processor.py:157} INFO - Started process (PID=821) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:45:18.101+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:45:18.102+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:45:18.102+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:45:18.117+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:45:18.150+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:45:18.150+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:45:18.201+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.105 seconds
+[2023-11-17T17:45:48.237+0000] {processor.py:157} INFO - Started process (PID=833) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:45:48.251+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:45:48.252+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:45:48.251+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:45:48.265+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:45:48.296+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:45:48.296+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:45:48.355+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.122 seconds
+[2023-11-17T17:46:18.447+0000] {processor.py:157} INFO - Started process (PID=845) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:46:18.456+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:46:18.457+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:46:18.457+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:46:18.473+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:46:18.503+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:46:18.503+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:46:18.557+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.115 seconds
+[2023-11-17T17:46:48.613+0000] {processor.py:157} INFO - Started process (PID=857) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:46:48.629+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:46:48.630+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:46:48.630+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:46:48.649+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:46:48.694+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:46:48.694+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:46:48.755+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.147 seconds
+[2023-11-17T17:47:18.821+0000] {processor.py:157} INFO - Started process (PID=869) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:47:18.828+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:47:18.829+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:47:18.829+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:47:18.842+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:47:18.878+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:47:18.877+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:47:18.929+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.111 seconds
+[2023-11-17T17:47:49.013+0000] {processor.py:157} INFO - Started process (PID=881) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:47:49.029+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:47:49.030+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:47:49.030+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:47:49.051+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:47:49.092+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:47:49.091+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:47:49.152+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.142 seconds
+[2023-11-17T17:48:19.192+0000] {processor.py:157} INFO - Started process (PID=893) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:48:19.202+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:48:19.204+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:48:19.203+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:48:19.224+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:48:19.279+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:48:19.279+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:48:19.364+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.177 seconds
+[2023-11-17T17:48:49.454+0000] {processor.py:157} INFO - Started process (PID=904) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:48:49.474+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:48:49.505+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:48:49.474+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:48:49.557+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:48:49.647+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:48:49.646+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:48:49.759+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.310 seconds
+[2023-11-17T17:49:19.892+0000] {processor.py:157} INFO - Started process (PID=916) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:49:19.904+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:49:19.905+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:49:19.904+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:49:19.918+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:49:19.950+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:49:19.950+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:49:20.064+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.176 seconds
+[2023-11-17T17:49:50.196+0000] {processor.py:157} INFO - Started process (PID=928) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:49:50.202+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:49:50.203+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:49:50.203+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:49:50.217+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:49:50.251+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:49:50.251+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:49:50.310+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.119 seconds
+[2023-11-17T17:50:20.343+0000] {processor.py:157} INFO - Started process (PID=941) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:50:20.356+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:50:20.357+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:50:20.357+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:50:20.371+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:50:20.401+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:50:20.401+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:50:20.453+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.113 seconds
+[2023-11-17T17:50:50.560+0000] {processor.py:157} INFO - Started process (PID=953) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:50:50.567+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:50:50.568+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:50:50.568+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:50:50.581+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:50:50.611+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:50:50.611+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:50:50.667+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.111 seconds
+[2023-11-17T17:51:20.701+0000] {processor.py:157} INFO - Started process (PID=965) to work on /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:51:20.713+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/postgres_to_gcs_staging.py for tasks to queue
+[2023-11-17T17:51:20.715+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:51:20.714+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:51:20.734+0000] {processor.py:839} INFO - DAG(s) dict_keys(['ingest_to_postgres']) retrieved from /opt/airflow/dags/postgres_to_gcs_staging.py
+[2023-11-17T17:51:20.769+0000] {logging_mixin.py:151} INFO - [2023-11-17T17:51:20.768+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-11-17T17:51:20.823+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/postgres_to_gcs_staging.py took 0.127 seconds
