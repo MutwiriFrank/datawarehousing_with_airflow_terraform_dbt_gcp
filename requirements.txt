@@ -1,2 +1,5 @@
 gcloud-aio-storage
 google-cloud-storage
+pandas
+Python-IO
+pyarrow

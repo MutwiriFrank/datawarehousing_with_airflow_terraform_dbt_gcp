@@ -39,7 +39,7 @@ CREATE TABLE ethinicity (
 
 CREATE TABLE country (
     country_id  SERIAL PRIMARY KEY  ,
-    country_name      INTEGER NOT NULL,
+    country_name      VARCHAR(50) NOT NULL,
     country_code  VARCHAR(50) NOT NULL,
     country_code_desc VARCHAR(255) NOT NULL,
     create_dtm  TIMESTAMP NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE student_course_enrollment (
 ) ;
 
 
-{# insert statements #}
+-- {# insert statements #}
 
 INSERT INTO department (department_name, department_code, department_code_desc, create_dtm, updated_dtm)
 VALUES
@@ -116,7 +116,7 @@ VALUES
 
 
 
-INSERT INTO unit (unit_name, unit_code, unit_code_desc, create_dtm)
+INSERT INTO unit (unit_name,unit_code, unit_code_desc, create_dtm)
 VALUES
     ('Unit 1', 'UNIT101', 'Introduction to Course Material', NOW() - INTERVAL '3 days'),
     ('Unit 2', 'UNIT102', 'Key Concepts and Principles', NOW() - INTERVAL '5 days'),
@@ -129,7 +129,7 @@ VALUES
     ('Unit 1', 'UNIT109', 'Critical Thinking', NOW() - INTERVAL '9 days'),
     ('Unit 2', 'UNIT110', 'Practical Exercises', NOW() - INTERVAL '10 days');	
 
-drop table course cascade
+
 
 INSERT INTO course (course_name, course_code, course_code_desc, course_period, department_id, create_dtm)
 VALUES

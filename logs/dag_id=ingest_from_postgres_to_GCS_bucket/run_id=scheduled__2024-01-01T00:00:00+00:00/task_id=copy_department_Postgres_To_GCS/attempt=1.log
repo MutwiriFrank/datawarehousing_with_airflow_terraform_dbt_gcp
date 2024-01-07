@@ -1,0 +1,17 @@
+[2024-01-07T13:54:02.349+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-01T00:00:00+00:00 [queued]>
+[2024-01-07T13:54:02.373+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-01T00:00:00+00:00 [queued]>
+[2024-01-07T13:54:02.374+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T13:54:02.401+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_department_Postgres_To_GCS> on 2024-01-01 00:00:00+00:00
+[2024-01-07T13:54:02.418+0000] {standard_task_runner.py:57} INFO - Started process 985 to run task
+[2024-01-07T13:54:02.428+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_department_Postgres_To_GCS', 'scheduled__2024-01-01T00:00:00+00:00', '--job-id', '240', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp4irzw8wj']
+[2024-01-07T13:54:02.436+0000] {standard_task_runner.py:85} INFO - Job 240: Subtask copy_department_Postgres_To_GCS
+[2024-01-07T13:54:02.591+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-01T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T13:54:02.767+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_department_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-01T00:00:00+00:00'
+[2024-01-07T13:54:02.791+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T13:54:02.811+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T13:54:02.837+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T13:54:02.850+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, department
+[2024-01-07T13:54:02.852+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T13:54:02.881+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_department_Postgres_To_GCS, execution_date=20240101T000000, start_date=20240107T135402, end_date=20240107T135402
+[2024-01-07T13:54:02.939+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T13:54:03.034+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,298 @@
+[2024-01-07T00:33:44.609+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_country_Postgres_To_GCS scheduled__2023-11-29T00:00:00+00:00 [queued]>
+[2024-01-07T00:33:44.636+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_country_Postgres_To_GCS scheduled__2023-11-29T00:00:00+00:00 [queued]>
+[2024-01-07T00:33:44.640+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T00:33:44.700+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_country_Postgres_To_GCS> on 2023-11-29 00:00:00+00:00
+[2024-01-07T00:33:44.711+0000] {standard_task_runner.py:57} INFO - Started process 2088 to run task
+[2024-01-07T00:33:44.719+0000] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_country_Postgres_To_GCS', 'scheduled__2023-11-29T00:00:00+00:00', '--job-id', '368', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmptzuja0k4']
+[2024-01-07T00:33:44.728+0000] {standard_task_runner.py:85} INFO - Job 368: Subtask copy_country_Postgres_To_GCS
+[2024-01-07T00:33:44.836+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_country_Postgres_To_GCS scheduled__2023-11-29T00:00:00+00:00 [running]> on host f500624b13d0
+[2024-01-07T00:33:45.118+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_country_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2023-11-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-29T00:00:00+00:00'
+[2024-01-07T00:33:45.149+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:33:45.172+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:33:45.478+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T00:33:45.485+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:33:45.537+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:33:45.543+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:33:52.123+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:33:52.140+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:33:52.195+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:33:52.215+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:33:52.217+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:33:54.356+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:33:54.371+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:33:54.390+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:33:54.411+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:33:54.412+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:33:56.813+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:33:56.829+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:33:56.842+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:33:56.856+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:33:56.857+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:33:58.701+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:33:58.721+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:33:58.745+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:33:58.771+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:33:58.774+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:00.718+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:00.731+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:00.744+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:00.760+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:00.762+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:02.561+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:02.575+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:02.592+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:02.609+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:02.609+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:04.508+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:04.540+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:04.611+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:04.660+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:04.661+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:06.555+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:06.569+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:06.583+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:06.598+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:06.599+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:08.235+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:08.251+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:08.267+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:08.284+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:08.286+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:09.919+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:09.933+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:09.949+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:09.968+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:09.970+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:12.072+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:12.128+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:12.180+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:12.221+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:12.222+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:14.429+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:14.471+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:14.527+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:14.573+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:14.574+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:16.507+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:16.551+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:16.600+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:16.633+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:16.658+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:19.341+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:19.373+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:19.390+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:19.409+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:19.411+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:22.071+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:22.095+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:22.142+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:22.171+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:22.173+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:25.284+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:25.307+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:25.324+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:25.345+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:25.347+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:28.048+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:28.073+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:28.092+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:28.110+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:28.111+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:30.604+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:30.625+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:30.643+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:30.667+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:30.669+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:33.271+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:33.289+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:33.308+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:33.330+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:33.331+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:35.725+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:35.752+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:35.767+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:35.785+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:35.786+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:38.593+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:38.619+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:38.647+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:38.670+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:38.671+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:41.664+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:41.682+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:41.697+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:41.715+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:41.717+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:44.450+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:44.503+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:44.539+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:44.567+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:44.568+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:47.199+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:47.218+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:47.245+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:47.277+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:47.279+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:50.074+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:50.103+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:50.141+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:50.181+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:50.182+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:53.077+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:53.101+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:53.144+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:53.168+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:53.169+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:55.938+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:55.950+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:55.962+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:55.976+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:55.977+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:34:58.362+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:34:58.393+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:34:58.454+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:34:58.503+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:34:58.504+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:00.916+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:00.988+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:01.017+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:01.054+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:01.055+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:03.488+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:03.502+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:03.525+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:03.544+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:03.546+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:06.037+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:06.055+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:06.074+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:06.091+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:06.093+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:08.699+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:08.758+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:08.830+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:08.879+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:08.887+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:11.570+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:11.588+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:11.607+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:11.627+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:11.629+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:14.230+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:14.245+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:14.262+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:14.281+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:14.283+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:17.199+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:17.261+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:17.309+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:17.400+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:17.401+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:20.073+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:20.086+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:20.099+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:20.115+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:20.116+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:23.124+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:23.144+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:23.164+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:23.187+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:23.188+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:25.904+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:25.929+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:25.944+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:25.961+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:25.962+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:28.495+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:28.512+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:28.533+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:28.560+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:28.561+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:31.233+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:31.254+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:31.287+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:31.332+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:31.333+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:34.096+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:34.128+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T00:35:34.150+0000] {postgres_to_gcs_staging.py:47} INFO - Uploading to bucket, country
+[2024-01-07T00:35:34.169+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T00:35:34.171+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T00:35:36.881+0000] {gcs.py:576} INFO - Data stream uploaded to data/country.parquet in school_data_lake_data-warehousing-proj bucket
+[2024-01-07T00:35:36.885+0000] {local_task_job_runner.py:294} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2024-01-07T00:35:36.894+0000] {process_utils.py:131} INFO - Sending 15 to group 2088. PIDs of all processes in the group: [2088]
+[2024-01-07T00:35:36.895+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 2088
+[2024-01-07T00:35:36.898+0000] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2024-01-07T00:35:36.899+0000] {connection.py:471} ERROR - Unable to retrieve connection from secrets backend (MetastoreBackend). Checking subsequent secrets backend.
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/connection.py", line 466, in get_connection_from_secrets
+    conn = secrets_backend.get_connection(conn_id=conn_id)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 77, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/secrets/metastore.py", line 42, in get_connection
+    conn = session.scalar(select(Connection).where(Connection.conn_id == conn_id).limit(1))
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1747, in scalar
+    return self.execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/future/engine.py", line 406, in connect
+    return super(Engine, self).connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1634, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2024-01-07T00:35:38.015+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=2088, status='terminated', exitcode=0, started='00:33:44') (2088) terminated with exit code 0
+[2024-01-07T13:51:32.746+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_country_Postgres_To_GCS scheduled__2023-11-29T00:00:00+00:00 [queued]>
+[2024-01-07T13:51:32.775+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_country_Postgres_To_GCS scheduled__2023-11-29T00:00:00+00:00 [queued]>
+[2024-01-07T13:51:32.775+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T13:51:32.803+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_country_Postgres_To_GCS> on 2023-11-29 00:00:00+00:00
+[2024-01-07T13:51:32.811+0000] {standard_task_runner.py:57} INFO - Started process 622 to run task
+[2024-01-07T13:51:32.819+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_country_Postgres_To_GCS', 'scheduled__2023-11-29T00:00:00+00:00', '--job-id', '137', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpoxnckf26']
+[2024-01-07T13:51:32.822+0000] {standard_task_runner.py:85} INFO - Job 137: Subtask copy_country_Postgres_To_GCS
+[2024-01-07T13:51:32.919+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_country_Postgres_To_GCS scheduled__2023-11-29T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T13:51:33.094+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_country_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2023-11-29T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-11-29T00:00:00+00:00'
+[2024-01-07T13:51:33.123+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T13:51:33.139+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T13:51:33.164+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T13:51:33.175+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, country
+[2024-01-07T13:51:33.175+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T13:51:33.192+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_country_Postgres_To_GCS, execution_date=20231129T000000, start_date=20240107T135132, end_date=20240107T135133
+[2024-01-07T13:51:33.232+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T13:51:33.298+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

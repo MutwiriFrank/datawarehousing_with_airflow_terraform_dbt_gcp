@@ -1,0 +1,5 @@
+-- init.sql
+CREATE DATABASE school;
+
+CREATE ROLE root WITH LOGIN SUPERUSER PASSWORD 'root';
+
