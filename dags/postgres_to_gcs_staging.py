@@ -31,7 +31,7 @@ default_args = {
 
 
 
-def Postgres_To_GCS_Bucket(table, BUCKET, last_execution_date=None ):
+def Postgres_To_GCS_Bucket(table, BUCKET, last_execution_date=None, **kwargs ):
 
     pg_hook = PostgresHook.get_hook("postgres_docker_conn")
     chunk_size = 10 
@@ -57,10 +57,12 @@ def Postgres_To_GCS_Bucket(table, BUCKET, last_execution_date=None ):
         # Convert DataFrame to Parquet format
         parquet_buffer = BytesIO()
         data.to_parquet(parquet_buffer, index=False)
-        
-        
+
+        date = kwargs['ds_nodash']
+      
+
         gcs_hook = GoogleCloudStorageHook(GOOGLE_CONN_ID)
-        gcs_path = f'data/{table}.parquet'
+        gcs_path = f'data/{table}-{date}.parquet'
 
         #gcs
         gcs_hook.upload( bucket_name=BUCKET, object_name=gcs_path, data=parquet_buffer.getvalue(),  mime_type='application/octet-stream')
@@ -80,7 +82,7 @@ with DAG(
     description='Historical and incremental load data from PostgreSQL to GCS bucket',
     default_args=default_args,
     schedule_interval="@daily",
-    start_date= datetime(2023,11,27),
+    start_date= datetime(2024,1,5),
     max_active_runs=3,  # The maximum number of active DAG runs allowed for the DAG
     max_active_tasks = 2 , # The total number of tasks that can run at the same time for a given DAG run.
     catchup = True

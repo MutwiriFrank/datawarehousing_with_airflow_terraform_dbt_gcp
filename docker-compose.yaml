@@ -194,7 +194,7 @@ services:
     image: postgres:14
     environment:
         - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=  
+        - POSTGRES_PASSWORD=  root
         - POSTGRES_DB=school
     ports:
       - 54320:5432
