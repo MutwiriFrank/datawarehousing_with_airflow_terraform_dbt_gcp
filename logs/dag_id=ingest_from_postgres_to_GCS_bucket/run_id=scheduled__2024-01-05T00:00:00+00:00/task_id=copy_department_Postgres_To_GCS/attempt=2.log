@@ -96,3 +96,627 @@ OSError: [Errno 99] Cannot assign requested address
 [2024-01-07T15:58:58.382+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 369 for task copy_department_Postgres_To_GCS (name 'ds_nodash' is not defined; 4464)
 [2024-01-07T15:58:58.398+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
 [2024-01-07T15:58:58.431+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:00:04.401+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:00:04.448+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:00:04.449+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2024-01-07T21:00:04.498+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_department_Postgres_To_GCS> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:00:04.505+0000] {standard_task_runner.py:57} INFO - Started process 12341 to run task
+[2024-01-07T21:00:04.509+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_department_Postgres_To_GCS', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '490', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpj1kmofy8']
+[2024-01-07T21:00:04.515+0000] {standard_task_runner.py:85} INFO - Job 490: Subtask copy_department_Postgres_To_GCS
+[2024-01-07T21:00:04.681+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T21:00:04.902+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_department_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:00:04.922+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:00:04.939+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:00:04.972+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T21:00:04.994+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:00:05.003+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:00:06.920+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet
+[2024-01-07T21:00:06.945+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_department_Postgres_To_GCS, execution_date=20240105T000000, start_date=20240107T210004, end_date=20240107T210006
+[2024-01-07T21:00:06.976+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:00:06.978+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:00:06.978+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:00:06.998+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:00:06.998+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:00:06.999+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:00:07.067+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 490 for task copy_department_Postgres_To_GCS (404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet; 12341)
+[2024-01-07T21:00:07.092+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:00:07.154+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:11:06.572+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:11:06.597+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:11:06.598+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2024-01-07T21:11:06.645+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_department_Postgres_To_GCS> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:11:06.658+0000] {standard_task_runner.py:57} INFO - Started process 12655 to run task
+[2024-01-07T21:11:06.668+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_department_Postgres_To_GCS', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '508', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp8_xt2lhi']
+[2024-01-07T21:11:06.675+0000] {standard_task_runner.py:85} INFO - Job 508: Subtask copy_department_Postgres_To_GCS
+[2024-01-07T21:11:06.800+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T21:11:06.980+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_department_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:11:07.001+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:11:07.016+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:11:07.039+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T21:11:07.061+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:11:07.070+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:11:07.865+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/local/lib/python3.8/ssl.py", line 1073, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.8/ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/local/lib/python3.8/ssl.py", line 1073, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.8/ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 482, in api_request
+    response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 341, in _make_request
+    return self._do_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 379, in _do_request
+    return self.http.request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/auth/transport/requests.py", line 542, in request
+    response = super(AuthorizedSession, self).request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+[2024-01-07T21:11:08.098+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_department_Postgres_To_GCS, execution_date=20240105T000000, start_date=20240107T211106, end_date=20240107T211108
+[2024-01-07T21:11:08.115+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:11:08.116+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:11:08.117+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:11:08.130+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:11:08.131+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:11:08.132+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/local/lib/python3.8/ssl.py", line 1073, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.8/ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 798, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 714, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/local/lib/python3.8/ssl.py", line 1073, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.8/ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 482, in api_request
+    response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 341, in _make_request
+    return self._do_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 379, in _do_request
+    return self.http.request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/auth/transport/requests.py", line 542, in request
+    response = super(AuthorizedSession, self).request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:11:08.171+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 508 for task copy_department_Postgres_To_GCS (('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')); 12655)
+[2024-01-07T21:11:08.213+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:11:08.253+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:23:33.014+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:23:33.047+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:23:33.048+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2024-01-07T21:23:33.089+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_department_Postgres_To_GCS> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:23:33.102+0000] {standard_task_runner.py:57} INFO - Started process 318 to run task
+[2024-01-07T21:23:33.112+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_department_Postgres_To_GCS', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '539', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp4x6_f11r']
+[2024-01-07T21:23:33.116+0000] {standard_task_runner.py:85} INFO - Job 539: Subtask copy_department_Postgres_To_GCS
+[2024-01-07T21:23:33.229+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [running]> on host 6609460de6e5
+[2024-01-07T21:23:33.384+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_department_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:23:33.401+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:23:33.417+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:23:33.440+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T21:23:33.463+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:23:33.471+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:23:35.187+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet
+[2024-01-07T21:23:35.236+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_department_Postgres_To_GCS, execution_date=20240105T000000, start_date=20240107T212333, end_date=20240107T212335
+[2024-01-07T21:23:35.286+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:23:35.288+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:23:35.289+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:23:35.320+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:23:35.321+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:23:35.321+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:23:35.390+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 539 for task copy_department_Postgres_To_GCS (404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet; 318)
+[2024-01-07T21:23:35.416+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:23:35.484+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:35:01.176+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:35:01.199+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:35:01.199+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2024-01-07T21:35:01.228+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_department_Postgres_To_GCS> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:35:01.235+0000] {standard_task_runner.py:57} INFO - Started process 643 to run task
+[2024-01-07T21:35:01.242+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_department_Postgres_To_GCS', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '552', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp_ob9p886']
+[2024-01-07T21:35:01.247+0000] {standard_task_runner.py:85} INFO - Job 552: Subtask copy_department_Postgres_To_GCS
+[2024-01-07T21:35:01.333+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_department_Postgres_To_GCS scheduled__2024-01-05T00:00:00+00:00 [running]> on host 6609460de6e5
+[2024-01-07T21:35:01.468+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_department_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:35:01.491+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:35:01.507+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:35:01.529+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T21:35:01.550+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:35:01.560+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:35:03.713+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 64, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet
+[2024-01-07T21:35:03.729+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_department_Postgres_To_GCS, execution_date=20240105T000000, start_date=20240107T213501, end_date=20240107T213503
+[2024-01-07T21:35:03.747+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:35:03.748+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:35:03.749+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:35:03.762+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:35:03.763+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:35:03.764+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 64, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:35:03.796+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 552 for task copy_department_Postgres_To_GCS (404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fdepartment.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/department.parquet; 643)
+[2024-01-07T21:35:03.811+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:35:03.852+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

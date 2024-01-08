@@ -1,4 +1,5 @@
-file = "course.csv"
+tables = ['course','dept' ]
  
-ids ='STG_'+str((file.split(".csv")[0]).upper())
-print(ids)
+for table in tables:
+    table_name = f'STG_{table.upper()}'
+    print(table_name)

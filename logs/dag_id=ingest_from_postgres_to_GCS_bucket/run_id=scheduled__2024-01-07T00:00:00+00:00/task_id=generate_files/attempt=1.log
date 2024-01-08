@@ -1,0 +1,2 @@
+[2024-01-08T11:07:40.463+0000] {taskinstance.py:1149} INFO - Dependencies not met for <TaskInstance: ingest_from_postgres_to_GCS_bucket.generate_files scheduled__2024-01-07T00:00:00+00:00 [queued]>, dependency 'Previous Dagrun State' FAILED: depends_on_past is true for this task, but 1 previous task instance(s) are not in a successful state.
+[2024-01-08T11:07:40.476+0000] {local_task_job_runner.py:154} INFO - Task is not able to be run

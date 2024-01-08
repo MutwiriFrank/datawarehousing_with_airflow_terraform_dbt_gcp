@@ -49,3 +49,244 @@
 [2024-01-07T16:06:04.829+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T160604, end_date=20240107T160604
 [2024-01-07T16:06:04.869+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
 [2024-01-07T16:06:04.893+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T17:53:20.634+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T17:53:20.650+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T17:53:20.650+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T17:53:20.668+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T17:53:20.676+0000] {standard_task_runner.py:57} INFO - Started process 7264 to run task
+[2024-01-07T17:53:20.681+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '385', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp9x80a2q_']
+[2024-01-07T17:53:20.685+0000] {standard_task_runner.py:85} INFO - Job 385: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T17:53:20.770+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T17:53:20.886+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T17:53:20.901+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T17:53:20.914+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T17:53:20.937+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T17:53:20.944+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, course
+[2024-01-07T17:53:20.945+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T17:53:20.963+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T175320, end_date=20240107T175320
+[2024-01-07T17:53:21.014+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T17:53:21.043+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T18:01:42.403+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T18:01:42.427+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T18:01:42.428+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T18:01:42.459+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T18:01:42.468+0000] {standard_task_runner.py:57} INFO - Started process 7514 to run task
+[2024-01-07T18:01:42.471+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '400', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpjav4cvhy']
+[2024-01-07T18:01:42.475+0000] {standard_task_runner.py:85} INFO - Job 400: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T18:01:42.560+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T18:01:42.712+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T18:01:42.738+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T18:01:42.755+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T18:01:42.782+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T18:01:42.790+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, course
+[2024-01-07T18:01:42.790+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T18:01:42.811+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T180142, end_date=20240107T180142
+[2024-01-07T18:01:42.844+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T18:01:42.872+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T19:12:42.324+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:12:42.339+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:12:42.339+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T19:12:42.361+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T19:12:42.368+0000] {standard_task_runner.py:57} INFO - Started process 9394 to run task
+[2024-01-07T19:12:42.372+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '417', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpdwtd_lce']
+[2024-01-07T19:12:42.376+0000] {standard_task_runner.py:85} INFO - Job 417: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T19:12:42.456+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T19:12:42.588+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T19:12:42.603+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:12:42.615+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:12:42.635+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T19:12:42.642+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, course
+[2024-01-07T19:12:42.643+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T19:12:42.661+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T191242, end_date=20240107T191242
+[2024-01-07T19:12:42.704+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T19:12:42.730+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T19:13:57.999+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:13:58.024+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:13:58.025+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T19:13:58.044+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T19:13:58.053+0000] {standard_task_runner.py:57} INFO - Started process 9454 to run task
+[2024-01-07T19:13:58.058+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '426', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpg3ctv_aw']
+[2024-01-07T19:13:58.061+0000] {standard_task_runner.py:85} INFO - Job 426: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T19:13:58.143+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T19:13:58.287+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T19:13:58.307+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:13:58.324+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:13:58.344+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T19:13:58.351+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, course
+[2024-01-07T19:13:58.352+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T19:13:58.366+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T191358, end_date=20240107T191358
+[2024-01-07T19:13:58.430+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T19:13:58.470+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T19:30:46.251+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:30:46.311+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:30:46.312+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T19:30:46.346+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T19:30:46.354+0000] {standard_task_runner.py:57} INFO - Started process 9953 to run task
+[2024-01-07T19:30:46.359+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '441', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpsgses6c6']
+[2024-01-07T19:30:46.362+0000] {standard_task_runner.py:85} INFO - Job 441: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T19:30:46.441+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T19:30:46.586+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T19:30:46.604+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:30:46.618+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:30:46.650+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T19:30:46.658+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, course
+[2024-01-07T19:30:46.659+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T19:30:46.678+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T193046, end_date=20240107T193046
+[2024-01-07T19:30:46.731+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T19:30:46.754+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T19:59:14.147+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:59:14.172+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T19:59:14.173+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T19:59:14.200+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T19:59:14.209+0000] {standard_task_runner.py:57} INFO - Started process 10715 to run task
+[2024-01-07T19:59:14.213+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '464', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmprm4tmdp5']
+[2024-01-07T19:59:14.216+0000] {standard_task_runner.py:85} INFO - Job 464: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T19:59:14.304+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T19:59:14.440+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T19:59:14.459+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:59:14.476+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T19:59:14.503+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T19:59:14.509+0000] {postgres_to_gcs_staging.py:52} INFO - Uploading to bucket, course
+[2024-01-07T19:59:14.510+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T19:59:14.530+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T195914, end_date=20240107T195914
+[2024-01-07T19:59:14.587+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T19:59:14.615+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T20:18:55.423+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T20:18:55.456+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T20:18:55.456+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T20:18:55.488+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T20:18:55.499+0000] {standard_task_runner.py:57} INFO - Started process 11240 to run task
+[2024-01-07T20:18:55.507+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '474', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpnf71jr2a']
+[2024-01-07T20:18:55.512+0000] {standard_task_runner.py:85} INFO - Job 474: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T20:18:55.636+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T20:18:55.839+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T20:18:55.860+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T20:18:55.885+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T20:18:55.921+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T20:18:55.932+0000] {python.py:194} INFO - Done. Returned value was: None
+[2024-01-07T20:18:55.953+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T201855, end_date=20240107T201855
+[2024-01-07T20:18:56.003+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-01-07T20:18:56.032+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:09:05.751+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T21:09:05.792+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [queued]>
+[2024-01-07T21:09:05.793+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 3
+[2024-01-07T21:09:05.881+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): copy_course_Postgres_To_GCS> on 2024-01-06 00:00:00+00:00
+[2024-01-07T21:09:05.889+0000] {standard_task_runner.py:57} INFO - Started process 12575 to run task
+[2024-01-07T21:09:05.898+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'copy_course_Postgres_To_GCS', 'scheduled__2024-01-06T00:00:00+00:00', '--job-id', '498', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpms96tu4l']
+[2024-01-07T21:09:05.903+0000] {standard_task_runner.py:85} INFO - Job 498: Subtask copy_course_Postgres_To_GCS
+[2024-01-07T21:09:06.143+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.copy_course_Postgres_To_GCS scheduled__2024-01-06T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T21:09:06.635+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='copy_course_Postgres_To_GCS' AIRFLOW_CTX_EXECUTION_DATE='2024-01-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-06T00:00:00+00:00'
+[2024-01-07T21:09:06.667+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:09:06.695+0000] {base.py:73} INFO - Using connection ID 'postgres_docker_conn' for task execution.
+[2024-01-07T21:09:06.812+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/providers/common/sql/hooks/sql.py:219 UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+[2024-01-07T21:09:06.865+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:09:06.879+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:09:08.910+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fcourse.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/course.parquet
+[2024-01-07T21:09:08.930+0000] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=copy_course_Postgres_To_GCS, execution_date=20240106T000000, start_date=20240107T210905, end_date=20240107T210908
+[2024-01-07T21:09:08.956+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:09:08.959+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:09:08.960+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:09:08.981+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:09:08.982+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:09:08.982+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgres_to_gcs_staging.py", line 62, in Postgres_To_GCS_Bucket
+    gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 698, in delete
+    blob.delete()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/blob.py", line 763, in delete
+    self.bucket.delete_blob(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/bucket.py", line 1647, in delete_blob
+    client._delete_resource(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/client.py", line 685, in _delete_resource
+    return self._connection.api_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/storage/_http.py", line 72, in api_request
+    return call()
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/_http/__init__.py", line 494, in api_request
+    raise exceptions.from_http_response(response)
+google.api_core.exceptions.NotFound: 404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fcourse.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/course.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:09:09.043+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 498 for task copy_course_Postgres_To_GCS (404 DELETE https://storage.googleapis.com/storage/v1/b/school_data_lake_data-warehousing-proj/o/data%2Fcourse.parquet?prettyPrint=false: No such object: school_data_lake_data-warehousing-proj/data/course.parquet; 12575)
+[2024-01-07T21:09:09.062+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:09:09.094+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

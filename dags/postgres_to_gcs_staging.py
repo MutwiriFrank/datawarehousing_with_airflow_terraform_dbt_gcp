@@ -9,6 +9,7 @@ from airflow.hooks.postgres_hook import PostgresHook
 from airflow.contrib.hooks.gcs_hook import GoogleCloudStorageHook 
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
+from airflow.providers.google.cloud.operators.gcs import GCSListObjectsOperator
 from airflow.models import Variable
 from io import BytesIO
  
@@ -17,6 +18,8 @@ BUCKET = "school_data_lake_data-warehousing-proj"
 GOOGLE_CONN_ID = "google_cloud_default"
 STAGING_DATASET = "staging_school"
 tables = ['course', 'country', 'department']
+
+
 
 default_args = {
     "email" : ["franklinmutwiri41@gmail.com"],
@@ -36,6 +39,7 @@ def Postgres_To_GCS_Bucket(table, BUCKET, last_execution_date=None, **kwargs ):
     pg_hook = PostgresHook.get_hook("postgres_docker_conn")
     chunk_size = 10 
     
+    
     offset = 0
     while True:
 
@@ -49,32 +53,60 @@ def Postgres_To_GCS_Bucket(table, BUCKET, last_execution_date=None, **kwargs ):
         
         data = pg_hook.get_pandas_df(query)
 
-        logging.info("Uploading to bucket, " + table )
+        gcs_hook = GoogleCloudStorageHook(GOOGLE_CONN_ID)
+        gcs_path = f'data/{table}.parquet'
+
 
         if data.empty:
             break
+        else:
+             # delete file first before uploading a new one
+            try:
+                gcs_hook.delete(bucket_name=BUCKET, object_name=gcs_path)
+            except:
+                pass
+
+            
 
         # Convert DataFrame to Parquet format
-        parquet_buffer = BytesIO()
-        data.to_parquet(parquet_buffer, index=False)
+            parquet_buffer = BytesIO()
+            data.to_parquet(parquet_buffer, index=False)
 
-        date = kwargs['ds_nodash']
-      
+            gcs_hook.upload( bucket_name=BUCKET, object_name=gcs_path, data=parquet_buffer.getvalue(),  mime_type='application/octet-stream')
 
-        gcs_hook = GoogleCloudStorageHook(GOOGLE_CONN_ID)
-        gcs_path = f'data/{table}-{date}.parquet'
+            offset += chunk_size
 
-        #gcs
-        gcs_hook.upload( bucket_name=BUCKET, object_name=gcs_path, data=parquet_buffer.getvalue(),  mime_type='application/octet-stream')
-
-        offset += chunk_size
-
-        # Store the current execution date as the last execution date
-        Variable.set(f'last_execution_date_{table}', datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'))
+            # Store the current execution date as the last execution date
+            Variable.set(f'last_execution_date_{table}', datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'))
 
 
 def get_last_execution_date(table):
     return Variable.get(f"last_execution_date_{table}", default_var=None)
+
+
+def generate_files(**kwargs):
+    
+
+    gcs_list_task = GCSListObjectsOperator(
+        
+        task_id='list_parquet_files',
+        bucket=BUCKET,
+        prefix='data/',
+        delimiter='.parquet',
+        provide_context=True
+    )
+  
+    parquet_files = gcs_list_task.execute(context=kwargs)
+    
+    # Push only the list of parquet files to XCom
+    parquet_files = gcs_list_task.get_result()
+
+    print("return obj")
+    print(gcs_list_task)
+
+    return parquet_files
+
+
 
 
 with DAG(
@@ -101,31 +133,41 @@ with DAG(
         task_id='end',
         dag=dag,    
     )
+
     for table in tables:
         postgresToGCSBucket = PythonOperator(
             task_id=f"copy_{table}_Postgres_To_GCS",
             python_callable=Postgres_To_GCS_Bucket,
-            op_args = [table, BUCKET, get_last_execution_date(table) ]
+            # provide_context=True,
+            op_args = [table, BUCKET, get_last_execution_date(table) ],
+            dag=dag
         )
 
-    # for csv_file in ['course.csv', 'country.csv', 'department.csv']:
-    #     table_name = 'STG_'+str((csv_file.split(".csv")[0]).upper())
+    
+    generate_files_task  = PythonOperator(
+        task_id = "generate_files",
+        python_callable = generate_files,
+        provide_context = True,
+        dag=dag
+
+    )
+
+
+
+
+    # for table in tables:
+    #     table_name = f'STG_{table.upper()}'
     #     print(table_name)
-    #     load_dataset_to_gcs = GCSToBigQueryOperator(
-            
-    #         task_id = str((csv_file.split(".csv")[0]))+'_load_dataset_to_bq',
+    #     load_dataset_to_gcs = GCSToBigQueryOperator(   
+    #         task_id = f"{table}_load_dataset_to_bq",
     #         bucket = BUCKET,
-    #         source_objects = [csv_file],
-    #         # destination_project_dataset_table = f'{PROJECT_ID}.{STAGING_DATASET}.{table_name}',
+    #         source_objects = [f"data/{table}.parquet"],
     #         destination_project_dataset_table =  f'data-warehousing-proj.staging_school.{table_name}',
     #         write_disposition='WRITE_TRUNCATE',
     #         create_disposition='CREATE_NEVER',
-    #         source_format = 'csv',
+    #         source_format = 'parquet',
     #         allow_quoted_newlines = 'true',
     #         skip_leading_rows = 1,
-         
     #     )
 
-  
-# start_task >> postgresToGCSBucket >> load_dataset_to_gcs >> end_task
-start_task >> postgresToGCSBucket >>  end_task
+start_task >> postgresToGCSBucket >>generate_files_task >>  end_task

@@ -1,0 +1,693 @@
+[2024-01-07T17:54:23.369+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T17:54:23.380+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T17:54:23.380+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T17:54:23.440+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T17:54:23.447+0000] {standard_task_runner.py:57} INFO - Started process 7310 to run task
+[2024-01-07T17:54:23.450+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '393', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpyansqj5a']
+[2024-01-07T17:54:23.453+0000] {standard_task_runner.py:85} INFO - Job 393: Subtask course_load_dataset_to_bq
+[2024-01-07T17:54:23.571+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T17:54:23.707+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T17:54:23.720+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T17:54:23.725+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T17:54:23.726+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T17:54:23.777+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_course'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/course-{ds_nodash}.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': 'true', 'encoding': 'UTF-8'}}
+[2024-01-07T17:54:23.778+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_36b719a254c43fcee66f9244d32eeb46
+[2024-01-07T17:54:25.621+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: Table data-warehousing-proj:staging_school.STG_course was not found in location europe-west6
+[2024-01-07T17:54:25.635+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T175423, end_date=20240107T175425
+[2024-01-07T17:54:25.654+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T17:54:25.654+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T17:54:25.654+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T17:54:25.666+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T17:54:25.666+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T17:54:25.667+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: Table data-warehousing-proj:staging_school.STG_course was not found in location europe-west6
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T17:54:25.698+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 393 for task course_load_dataset_to_bq (404 Not found: Table data-warehousing-proj:staging_school.STG_course was not found in location europe-west6; 7310)
+[2024-01-07T17:54:25.712+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T17:54:25.735+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T18:02:42.218+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T18:02:42.237+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T18:02:42.237+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T18:02:42.260+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T18:02:42.267+0000] {standard_task_runner.py:57} INFO - Started process 7551 to run task
+[2024-01-07T18:02:42.273+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '405', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp1z4l4jbe']
+[2024-01-07T18:02:42.277+0000] {standard_task_runner.py:85} INFO - Job 405: Subtask course_load_dataset_to_bq
+[2024-01-07T18:02:42.363+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T18:02:42.481+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T18:02:42.495+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T18:02:42.500+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T18:02:42.501+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T18:02:42.547+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/course-{ds_nodash}.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': 'true', 'encoding': 'UTF-8'}}
+[2024-01-07T18:02:42.548+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_9bfd00771186db3f0bffe21bcf8eb4a3
+[2024-01-07T18:02:44.828+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/course-{ds_nodash}.parquet
+[2024-01-07T18:02:44.842+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T180242, end_date=20240107T180244
+[2024-01-07T18:02:44.862+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T18:02:44.862+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T18:02:44.862+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T18:02:44.875+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T18:02:44.876+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T18:02:44.877+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/course-{ds_nodash}.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T18:02:44.907+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 405 for task course_load_dataset_to_bq (404 Not found: URI gs://school_data_lake_data-warehousing-proj/course-{ds_nodash}.parquet; 7551)
+[2024-01-07T18:02:44.939+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T18:02:44.962+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T19:15:00.149+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T19:15:00.191+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T19:15:00.192+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T19:15:00.255+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T19:15:00.262+0000] {standard_task_runner.py:57} INFO - Started process 9490 to run task
+[2024-01-07T19:15:00.267+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '430', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpc5t46dho']
+[2024-01-07T19:15:00.270+0000] {standard_task_runner.py:85} INFO - Job 430: Subtask course_load_dataset_to_bq
+[2024-01-07T19:15:00.348+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T19:15:00.480+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T19:15:00.494+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T19:15:00.499+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T19:15:00.500+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T19:15:00.549+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/course-20240105.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': 1, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': 'true', 'encoding': 'UTF-8'}}
+[2024-01-07T19:15:00.550+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_e27b72db69e1d278c38c030570efcbb0
+[2024-01-07T19:15:03.173+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/course-20240105.parquet
+[2024-01-07T19:15:03.190+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T191500, end_date=20240107T191503
+[2024-01-07T19:15:03.218+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T19:15:03.219+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T19:15:03.220+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T19:15:03.241+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T19:15:03.242+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T19:15:03.243+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/course-20240105.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T19:15:03.336+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 430 for task course_load_dataset_to_bq (404 Not found: URI gs://school_data_lake_data-warehousing-proj/course-20240105.parquet; 9490)
+[2024-01-07T19:15:03.377+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T19:15:03.414+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T20:19:55.548+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T20:19:55.590+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T20:19:55.591+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T20:19:55.636+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T20:19:55.653+0000] {standard_task_runner.py:57} INFO - Started process 11281 to run task
+[2024-01-07T20:19:55.659+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '480', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmp1iwp2px9']
+[2024-01-07T20:19:55.669+0000] {standard_task_runner.py:85} INFO - Job 480: Subtask course_load_dataset_to_bq
+[2024-01-07T20:19:55.878+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T20:19:56.177+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T20:19:56.211+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T20:19:56.221+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T20:19:56.224+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T20:19:56.301+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'PARQUET', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/data/course.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False}}
+[2024-01-07T20:19:56.302+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_03ebf2290c48fc1e33cd2b4a03e58c2d
+[2024-01-07T20:19:58.732+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+[2024-01-07T20:19:58.750+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T201955, end_date=20240107T201958
+[2024-01-07T20:19:58.772+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T20:19:58.773+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T20:19:58.773+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T20:19:58.787+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T20:19:58.787+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T20:19:58.788+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T20:19:58.813+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 480 for task course_load_dataset_to_bq (404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet; 11281)
+[2024-01-07T20:19:58.855+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T20:19:58.888+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:00:40.484+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:00:40.502+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:00:40.503+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T21:00:40.525+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:00:40.534+0000] {standard_task_runner.py:57} INFO - Started process 12368 to run task
+[2024-01-07T21:00:40.538+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '496', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpjcr43k9l']
+[2024-01-07T21:00:40.541+0000] {standard_task_runner.py:85} INFO - Job 496: Subtask course_load_dataset_to_bq
+[2024-01-07T21:00:40.661+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T21:00:40.802+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:00:40.820+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:00:40.824+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:00:40.825+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T21:00:40.880+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'PARQUET', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/data/course.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False}}
+[2024-01-07T21:00:40.882+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_b56e50d60bdf666bb08702e2473740fc
+[2024-01-07T21:00:43.348+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+[2024-01-07T21:00:43.368+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T210040, end_date=20240107T210043
+[2024-01-07T21:00:43.390+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:00:43.391+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:00:43.391+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:00:43.407+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:00:43.408+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:00:43.408+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:00:43.437+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 496 for task course_load_dataset_to_bq (404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet; 12368)
+[2024-01-07T21:00:43.485+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:00:43.516+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:11:41.690+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:11:41.712+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:11:41.712+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T21:11:41.734+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:11:41.741+0000] {standard_task_runner.py:57} INFO - Started process 12682 to run task
+[2024-01-07T21:11:41.747+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '513', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmpqgbfvrin']
+[2024-01-07T21:11:41.751+0000] {standard_task_runner.py:85} INFO - Job 513: Subtask course_load_dataset_to_bq
+[2024-01-07T21:11:41.839+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 5d007c0b4985
+[2024-01-07T21:11:41.987+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:11:42.008+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:11:42.017+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:11:42.018+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T21:11:42.070+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'PARQUET', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/data/course.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False}}
+[2024-01-07T21:11:42.072+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_d9997af62d6c2c24b7a5f30f12ab9b74
+[2024-01-07T21:11:44.663+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+[2024-01-07T21:11:44.683+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T211141, end_date=20240107T211144
+[2024-01-07T21:11:44.713+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:11:44.713+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:11:44.714+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:11:44.730+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:11:44.731+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:11:44.731+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:11:44.788+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 513 for task course_load_dataset_to_bq (404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet; 12682)
+[2024-01-07T21:11:44.812+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:11:44.838+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-01-07T21:24:09.059+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:24:09.079+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [queued]>
+[2024-01-07T21:24:09.080+0000] {taskinstance.py:1361} INFO - Starting attempt 3 of 3
+[2024-01-07T21:24:09.110+0000] {taskinstance.py:1382} INFO - Executing <Task(GCSToBigQueryOperator): course_load_dataset_to_bq> on 2024-01-05 00:00:00+00:00
+[2024-01-07T21:24:09.118+0000] {standard_task_runner.py:57} INFO - Started process 346 to run task
+[2024-01-07T21:24:09.121+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'ingest_from_postgres_to_GCS_bucket', 'course_load_dataset_to_bq', 'scheduled__2024-01-05T00:00:00+00:00', '--job-id', '545', '--raw', '--subdir', 'DAGS_FOLDER/postgres_to_gcs_staging.py', '--cfg-path', '/tmp/tmptrela3wq']
+[2024-01-07T21:24:09.127+0000] {standard_task_runner.py:85} INFO - Job 545: Subtask course_load_dataset_to_bq
+[2024-01-07T21:24:09.212+0000] {task_command.py:416} INFO - Running <TaskInstance: ingest_from_postgres_to_GCS_bucket.course_load_dataset_to_bq scheduled__2024-01-05T00:00:00+00:00 [running]> on host 6609460de6e5
+[2024-01-07T21:24:09.350+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='franklinmutwiri41@gmail.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_from_postgres_to_GCS_bucket' AIRFLOW_CTX_TASK_ID='course_load_dataset_to_bq' AIRFLOW_CTX_EXECUTION_DATE='2024-01-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-05T00:00:00+00:00'
+[2024-01-07T21:24:09.366+0000] {connection.py:232} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-01-07T21:24:09.370+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-01-07T21:24:09.371+0000] {gcs_to_bigquery.py:376} INFO - Using existing BigQuery table for storing data...
+[2024-01-07T21:24:09.421+0000] {gcs_to_bigquery.py:380} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_NEVER', 'destinationTable': {'projectId': 'data-warehousing-proj', 'datasetId': 'staging_school', 'tableId': 'STG_COURSE'}, 'sourceFormat': 'PARQUET', 'sourceUris': ['gs://school_data_lake_data-warehousing-proj/data/course.parquet'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False}}
+[2024-01-07T21:24:09.422+0000] {bigquery.py:1596} INFO - Inserting job ***_ingest_from_postgres_to_GCS_bucket_course_load_dataset_to_bq_2024_01_05T00_00_00_00_00_343585bdba6ee879d96fb4899621cbeb
+[2024-01-07T21:24:11.767+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+[2024-01-07T21:24:11.786+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=ingest_from_postgres_to_GCS_bucket, task_id=course_load_dataset_to_bq, execution_date=20240105T000000, start_date=20240107T212409, end_date=20240107T212411
+[2024-01-07T21:24:11.815+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/email.py:154 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2024-01-07T21:24:11.816+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:24:11.816+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:24:11.838+0000] {configuration.py:1068} WARNING - section/key [smtp/smtp_user] not found in config
+[2024-01-07T21:24:11.839+0000] {email.py:270} INFO - Email alerting: attempt 1
+[2024-01-07T21:24:11.840+0000] {taskinstance.py:2007} ERROR - Failed to send email to: ['franklinmutwiri41@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1518, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1681, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1744, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 439, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2420, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2005, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2422, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 154, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 272, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/email.py", line 316, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.8/smtplib.py", line 339, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.8/smtplib.py", line 310, in _get_socket
+    return socket.create_connection((host, port), timeout,
+  File "/usr/local/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/usr/local/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+OSError: [Errno 99] Cannot assign requested address
+[2024-01-07T21:24:11.967+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 545 for task course_load_dataset_to_bq (404 Not found: URI gs://school_data_lake_data-warehousing-proj/data/course.parquet; 346)
+[2024-01-07T21:24:12.030+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-01-07T21:24:12.206+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
